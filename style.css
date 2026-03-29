@@ -1,0 +1,333 @@
+/* Netflix-inspired style */
+
+:root {
+    --bg: #141414;
+    /* cor principal de fundo */
+    --bg-soft: #181818;
+    /* fundo de cartão/section */
+    --text: #ffffff;
+    /* cor do texto */
+    --muted: #b3b3b3;
+    /* cor de texto secundário */
+    --primary: #e50914;
+    /* cor de destaque (botões/título) */
+    --card: #222;
+    /* cor de fundo dos cards */
+    --shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+    /* sombra principal */
+}
+
+* {
+    box-sizing: border-box;
+    /* inclui borda/padding no width/height */
+}
+
+html, body {
+    min-height: 100vh; /* garante altura total da viewport */
+    margin: 0; /* remove margem padrão do navegador */
+    display: flex; /* torna o layout de coluna flexível */
+    flex-direction: column; /* empilha header/main/footer verticalmente */
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    /* fontes preferenciais */
+    background: linear-gradient(180deg, var(--bg) 0%, #0f0f0f 100%);
+    /* fundo gradiente */
+    color: var(--text);
+    /* cor de texto global */
+}
+
+header {
+    display: flex;
+    /* layout flexível para itens internos */
+    align-items: center;
+    /* centraliza verticalmente conteúdo */
+    padding: 1rem 2rem;
+    /* espaçamento interno */
+    background: rgba(20, 20, 20, 0.95);
+    /* cor de fundo translúcida */
+    position: sticky;
+    /* fixa no topo ao rolar */
+    top: 0;
+    /* distância superior do sticky */
+    z-index: 10;
+    /* garante que esteja acima dos outros elementos */
+}
+
+header h1 {
+    margin: 0;
+    /* remove margem padrão do título */
+    font-size: 1.4rem;
+    /* tamanho da fonte do título */
+    letter-spacing: 0.08em;
+    /* espaçamento entre letras */
+    color: var(--primary);
+    /* cor primária no título */
+}
+
+main {
+    display: grid;
+    /* estrutura de grade para centralizar */
+    place-items: center;
+    /* centraliza conteúdo no eixo x/y */
+    padding: 3rem 1rem 2rem;
+    /* espaçamento superior e lateral */
+    flex: 1; /* expande main para preencher o espaço entre header e footer */
+    min-height: 0; /* permite o conteúdo encolher corretamente em flexbox */
+}
+
+section {
+    width: min(100%, 960px);
+    /* largura máxima de 960px */
+    background: var(--bg-soft);
+    /* cor de fundo mais suave */
+    border-radius: 12px;
+    /* cantos arredondados */
+    box-shadow: var(--shadow);
+    /* sombra externa */
+    padding: 2.4rem;
+    /* espaçamento interno */
+}
+
+section h2 {
+    margin: 0 0 1.6rem;
+    /* margem inferior de seção */
+    font-size: 1.9rem;
+    /* tamanho do subtítulo */
+}
+
+.profiles {
+    display: grid;
+    /* configura grade de perfis */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* colunas responsivas */
+    gap: 1.25rem;
+    /* espaçamento entre cards */
+}
+
+.profile {
+    text-align: center;
+    /* alinha texto no centro */
+    background: var(--card);
+    /* cor de fundo do cartão */
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    /* borda leve */
+    border-radius: 10px;
+    /* cantos arredondados do cartão */
+    padding: 1rem;
+    /* espaçamento interno */
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* animação suave */
+    cursor: pointer;
+    /* indica ação clicável */
+    position: relative;
+    /* permite posicionamento interno absolute */
+}
+
+.profile:hover {
+    transform: scale(1.12) translateY(-8px);
+    /* aumenta e levanta no hover */
+    border-color: rgba(255, 255, 255, 0.3);
+    /* borda mais forte no hover */
+    background: rgba(100, 100, 100, 0.1);
+    /* fundo levemente iluminado */
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(150, 150, 150, 0.2);
+    /* sombra intensa */
+}
+
+.profile img {
+    border-radius: 50%;
+    /* formato circular da imagem */
+    width: 120px;
+    /* largura fixa */
+    height: 120px;
+    /* altura fixa */
+    object-fit: cover;
+    /* ajusta imagem sem distorção */
+    border: 3px solid rgba(255, 255, 255, 0.22);
+    /* borda da imagem */
+}
+
+.profile p {
+    margin: 0.9rem 0 0;
+    /* margem superior para separado do img */
+    font-size: 1.05rem;
+    /* tamanho do texto do nome */
+    color: var(--muted);
+    /* cor do texto secundário */
+}
+
+footer {
+    text-align: center;
+    /* centraliza texto do rodapé */
+    padding: 1rem;
+    /* espaçamento interno */
+    color: var(--muted);
+    /* cor de texto pálido */
+    margin-top: 1rem;
+    /* distancia-se do conteúdo acima */
+}
+
+/* Responsividade para tablets e mobile menores */
+@media (max-width: 900px) {
+    header {
+        padding: 0.8rem 1rem;
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    main {
+        padding: 2rem 0.8rem 1.5rem;
+    }
+
+    section {
+        padding: 1.6rem;
+    }
+
+    section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .profile {
+        padding: 0.8rem;
+    }
+
+    .profile img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Responsividade extra para celulares pequenos */
+@media (max-width: 600px) {
+    header {
+        padding: 0.6rem 0.75rem;
+    }
+
+    header h1 {
+        font-size: 1.1rem;
+    }
+
+    .profiles {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.9rem;
+    }
+
+    .profile {
+        border-width: 1px;
+        border-radius: 8px;
+    }
+
+    .profile p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Ajuste opcional para telas muito grandes */
+@media (min-width: 1400px) {
+    main {
+        padding: 4rem 1.5rem 3rem;
+    }
+
+    section {
+        padding: 3rem;
+    }
+
+    section h2 {
+        font-size: 2.2rem;
+    }
+
+    .profile img {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+/* Ajuste específico para iPhones: reduzir espaço vazio abaixo do footer e centralizar conteúdo verticalmente */
+@media only screen and (max-width: 480px) and (max-height: 900px) and (-webkit-device-pixel-ratio: 2),
+       only screen and (max-width: 480px) and (max-height: 900px) and (-webkit-device-pixel-ratio: 3) {
+    html, body {
+        min-height: 100vh; /* garante altura total da viewport */
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1; /* faz main ocupar o espaço disponível */
+        display: grid;
+        place-items: center; /* centraliza horizontal e vertical */
+        padding-top: 1.5rem;
+        padding-bottom: 1.2rem;
+    }
+
+    section {
+        margin-bottom: 0.4rem; /* reduz espaço abaixo do section */
+    }
+
+    footer {
+        margin-top: 0.7rem; /* visual mais equilibrado */
+        padding-bottom: 0.8rem;
+    }
+}
+
+/* Ajuste específico para iPhone 14 Pro Max */
+@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+    html, body {
+        min-height: 100vh; /* garante altura total da viewport */
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1; /* usa espaço disponível para deslocar conteúdo ao centro */
+        display: grid;
+        place-items: center; /* centraliza conteúdo o mais vertical possível */
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    section {
+        margin-bottom: 0.2rem; /* reduz ainda mais espaço abaixo do section */
+    }
+
+    footer {
+        margin-top: 0.6rem; /* leve ajuste específico */
+        padding-bottom: 0.5rem;
+    }
+}
+
+/* Layout uniforme para catálogo de filmes */
+.grade-filmes {
+    display: flex;
+    flex-direction: row; /* horizontal */
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    overflow-x: auto; /* permite rolagem horizontal */
+    scroll-snap-type: x mandatory;
+}
+
+.filme {
+    min-width: 320px;
+    flex: 0 0 auto;
+    text-align: center;
+    scroll-snap-align: start;
+}
+
+.filme img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.filme p {
+    margin: 0.6rem 0 0;
+    font-weight: 600;
+    color: var(--text);
+}

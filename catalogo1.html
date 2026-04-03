@@ -182,38 +182,6 @@
             });
         });
 
-        // Lógica de Pesquisa de Trilha Sonora
-        const soundtrackData = {
-            "interstellar": ["Dreaming of the Crash - Hans Zimmer", "Cornfield Chase - Hans Zimmer", "Stay - Hans Zimmer", "No Time for Caution - Hans Zimmer"],
-            "batman": ["Something In The Way - Nirvana", "The Batman - Michael Giacchino", "Catwoman - Michael Giacchino"],
-            "stranger things": ["Should I Stay or Should I Go - The Clash", "Running Up That Hill - Kate Bush", "Master of Puppets - Metallica"],
-            "la la land": ["Another Day of Sun - Cast", "City of Stars - Ryan Gosling", "Audition - Emma Stone"]
-        };
-
-        const searchBtn = document.getElementById('search-soundtrack-btn');
-        const searchInput = document.getElementById('soundtrack-input');
-        const resultsDiv = document.getElementById('soundtrack-results');
-        const songList = document.getElementById('song-list');
-        const movieTitleDisplay = document.getElementById('soundtrack-movie-title');
-
-        searchBtn.addEventListener('click', () => {
-            const query = searchInput.value.toLowerCase().trim();
-            songList.innerHTML = '';
-            
-            if (soundtrackData[query]) {
-                resultsDiv.style.display = 'block';
-                movieTitleDisplay.textContent = `Músicas de "${query.toUpperCase()}"`;
-                soundtrackData[query].forEach(song => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<i class="fas fa-music"></i> ${song}`;
-                    songList.appendChild(li);
-                });
-            } else {
-                resultsDiv.style.display = 'block';
-                movieTitleDisplay.textContent = "Título não encontrado em nossa base de trilhas.";
-            }
-        });
-
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') searchBtn.click();
         });
